@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# Sign up for pushover account at https://pushover.net and setup your application token and user token
+# Replace [placholders] with real tokens
+
+case $1 in
+        shutdown-initiated)
+                curl -s \
+                        --form-string "token=[REPLACE WITH APP TOKEN]" \
+                        --form-string "user=[REPLACE WITH USER TOKEN]" \
+                        --form-string "message=UPS status: $1" \
+                https://api.pushover.net/1/messages.json
+                upsmon -c fsd;;
+	*)
+		curl -s \
+			--form-string "token=[REPLACE WITH APP TOKEN]" \
+			--form-string "user=[REPLACE WITH USER TOKEN]" \
+			--form-string "message=UPS status: $1" \
+		https://api.pushover.net/1/messages.json;;
+esac
