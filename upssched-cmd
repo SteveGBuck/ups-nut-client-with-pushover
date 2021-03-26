@@ -9,12 +9,12 @@ case $1 in
                         --form-string "token=[REPLACE WITH APP TOKEN]" \
                         --form-string "user=[REPLACE WITH USER TOKEN]" \
                         --form-string "message=UPS status: $1" \
-                https://api.pushover.net/1/messages.json
+                        https://api.pushover.net/1/messages.json
                 upsmon -c fsd;;
 	*)
 		curl -s \
 			--form-string "token=[REPLACE WITH APP TOKEN]" \
 			--form-string "user=[REPLACE WITH USER TOKEN]" \
 			--form-string "message=UPS status: $1" \
-		https://api.pushover.net/1/messages.json;;
+		        https://api.pushover.net/1/messages.json;;
 esac
